@@ -1,0 +1,17 @@
+https://www.mkyong.com/java/how-to-send-http-request-getpost-in-java/
+https://stackabuse.com/how-to-send-http-requests-in-java/
+https://developer.github.com/v3/#pagination
+https://www.java67.com/2016/10/3-ways-to-convert-string-to-json-object-in-java.html
+
+Actual repository:
+https://github.com/green-fox-academy/level-test-basic-exam
+
+Forks:
+https://developer.github.com/v3/repos/forks/
+
+Commits:
+https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
+
+Single user:
+https://developer.github.com/v3/users/#get-a-single-user
+
