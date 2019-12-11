@@ -45,6 +45,7 @@ public class ConnectionService {
     return content.toString();
   }
 
+  // TODO: use one instance only
   protected static ObjectMapper buildMapper(){
     ObjectMapper mapper = new ObjectMapper();
     mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -52,7 +53,7 @@ public class ConnectionService {
     return mapper;
   }
 
-  protected static String buildAccessData(){
+  private static String buildAccessData(){
     String gitUserName = System.getenv("GITHUB_USERNAME");
     String gitPassword = System.getenv("GITHUB_PASSWORD");
     return gitUserName + ":" + gitPassword;

@@ -1,17 +1,16 @@
 package com.task.github.models;
 
 import com.task.github.models.commit.CommitItem;
+import com.task.github.models.user.UserItem;
 
 import java.util.List;
 
 public class Result {
-  private String login;
-  private String name;
+  private UserItem user;
   private List<CommitItem> commits;
 
-  public Result (String login, String name, List<CommitItem> commits){
-    this.login = login;
-    this.name = name;
+  public Result (UserItem user, List<CommitItem> commits){
+    this.user = user;
     this.commits = commits;
   }
 }
