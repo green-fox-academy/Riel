@@ -13,4 +13,14 @@ public class Result {
     this.user = user;
     this.commits = commits;
   }
+
+  //region getters
+  public UserItem getUser() {
+    return user;
+  }
+
+  public List<CommitItem> getCommits() {
+    return commits;
+  }
+  //endregion
 }

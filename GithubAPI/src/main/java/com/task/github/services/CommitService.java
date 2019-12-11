@@ -18,6 +18,8 @@ public class CommitService {
     // https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
     // GET /repos/:owner/:repo/commits
 
+
+    // TODO: remove code duplication here
     String commitLink = "https://api.github.com/repos/" + ownerName +"/" + repoName + "/commits";
     List<CommitItem> items = new ArrayList<>();
 

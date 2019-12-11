@@ -3,9 +3,7 @@ package com.task.github;
 import com.task.github.models.Result;
 import com.task.github.models.commit.CommitItem;
 import com.task.github.models.user.UserItem;
-import com.task.github.services.CommitService;
-import com.task.github.services.ForkService;
-import com.task.github.services.UserService;
+import com.task.github.services.*;
 import com.task.github.models.fork.ForkItem;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -44,23 +42,25 @@ public class GithubHandler implements CommandLineRunner {
     List<String> ownerLoginNames = forks.stream().map(item -> item.getOwner().getLogin()).collect(Collectors.toList());
 
     // Get all relevant commits
-    List<Result> resulst = new ArrayList<>();
+    List<Result> results = new ArrayList<>();
 
-    // TODO: REMOVE THIS:
-    //DEBUGGING:
-    List<String> shortList = ownerLoginNames.subList(0,30);
+    // TODO: REMOVE THIS AFTER DEBUGGING: ------------
+    // FOR DEBUGGING:
+    // List<String> shortList = ownerLoginNames.subList(0,30);
+    // ------------------------------------------------
 
-    for (String login: shortList) {
+    for (String login: ownerLoginNames) {
       UserItem user = userService.getUser(login);
       List<CommitItem> commits = commitService.getCommits(login, LEVEL_TEST_REPO);
       Result result = new Result(user, commits);
-      resulst.add(result);
+      results.add(result);
       System.out.println("Item processed: " + login);
     }
 
     // Collect necessary information:
-    // use e-mail to see who made the commit, that is the only stable user data
-
-    System.out.println("Process finished");
+    DataCollectorService collector = new DataCollectorService();
+    String dataToExport = collector.processResults(results);
+    FileIOHandler exporter = new FileIOHandler();
+    exporter.saveToFile(dataToExport);
   }
 }
